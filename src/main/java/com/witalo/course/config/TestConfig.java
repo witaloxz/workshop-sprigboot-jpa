@@ -10,10 +10,12 @@ import org.springframework.context.annotation.Profile;
 
 import com.witalo.course.entities.Category;
 import com.witalo.course.entities.Order;
+import com.witalo.course.entities.Product;
 import com.witalo.course.entities.User;
 import com.witalo.course.entities.enums.OrderStatus;
 import com.witalo.course.repositories.CategoryRepository;
 import com.witalo.course.repositories.OrderRepository;
+import com.witalo.course.repositories.ProductRepository;
 import com.witalo.course.repositories.UserRepository;
 
 @Configuration
@@ -28,12 +30,20 @@ public class TestConfig implements CommandLineRunner {
 	
 	@Autowired
 	private CategoryRepository categoryRepository;
+	
+	@Autowired
+	private ProductRepository productRepository;
 
 	@Override
 	public void run(String... args) throws Exception {
 		Category cat1 = new Category(null, "Eletronics");
 		Category cat2 = new Category(null, "Books");
 		Category cat3 = new Category(null, "Computers");
+		
+		Product p1 = new Product(null, "The lord of the Rings", "Lorem ipsum dolor sit amet, consectetur", 90.5, "");
+		Product p2 = new Product(null, "Smart Tv", "Nulla eu imperdiet purus. Maecenas ante", 2190.0, "");
+		Product p3 = new Product(null, "Macbook", "Nam eleifend maximus tortor, at mollis", 1250.0, "");
+		Product p4 = new Product(null, "PC Gamer", "Donec aliquet odio ac rhoncus cursus", 9000.0, "");
 		
 		User us1 = new User(null, "Maria Brown", "maria@gmail.com", "9282928292", "654321");
 		User us2 = new User(null, "Andressa", "andressa@gmail.com", "40028922", "123456");
@@ -46,6 +56,7 @@ public class TestConfig implements CommandLineRunner {
 		userRepository.saveAll(Arrays.asList(us1,us2));
 		orderRepository.saveAll(Arrays.asList(o1,o2));
 		categoryRepository.saveAll(Arrays.asList(cat1,cat2,cat3));
+		productRepository.saveAll(Arrays.asList(p1,p2,p3,p4));
 		
 	}
 
