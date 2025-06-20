@@ -22,15 +22,15 @@ import com.witalo.course.repositories.UserRepository;
 @Profile("test")
 public class TestConfig implements CommandLineRunner {
 
-    @Autowired
+	@Autowired
 	private UserRepository userRepository;
-	
+
 	@Autowired
 	private OrderRepository orderRepository;
-	
+
 	@Autowired
 	private CategoryRepository categoryRepository;
-	
+
 	@Autowired
 	private ProductRepository productRepository;
 
@@ -40,24 +40,35 @@ public class TestConfig implements CommandLineRunner {
 		Category cat2 = new Category(null, "Books");
 		Category cat3 = new Category(null, "Computers");
 		
+		categoryRepository.saveAll(Arrays.asList(cat1, cat2, cat3));
+
 		Product p1 = new Product(null, "The lord of the Rings", "Lorem ipsum dolor sit amet, consectetur", 90.5, "");
 		Product p2 = new Product(null, "Smart Tv", "Nulla eu imperdiet purus. Maecenas ante", 2190.0, "");
 		Product p3 = new Product(null, "Macbook", "Nam eleifend maximus tortor, at mollis", 1250.0, "");
 		Product p4 = new Product(null, "PC Gamer", "Donec aliquet odio ac rhoncus cursus", 9000.0, "");
+
+		p1.getCategories().add(cat2);
+		p2.getCategories().add(cat1);
+		p3.getCategories().add(cat3);
+		p3.getCategories().add(cat1);
+		p4.getCategories().add(cat3);
+		p4.getCategories().add(cat1);
 		
+		productRepository.saveAll(Arrays.asList(p1, p2, p3, p4));
+		
+
 		User us1 = new User(null, "Maria Brown", "maria@gmail.com", "9282928292", "654321");
 		User us2 = new User(null, "Andressa", "andressa@gmail.com", "40028922", "123456");
+
+		userRepository.saveAll(Arrays.asList(us1, us2));
+		
+		Order o1 = new Order(null, Instant.parse("2019-06-20T19:53:07Z"), OrderStatus.PAID, us1);
+		Order o2 = new Order(null, Instant.parse("2019-07-21T03:42:10Z"), OrderStatus.WAITING_PAYMENT, us2);
+
+		orderRepository.saveAll(Arrays.asList(o1, o2));
 		
 		
-		Order o1 = new Order(null, Instant.parse("2019-06-20T19:53:07Z"),OrderStatus.PAID ,us1);
-		Order o2 = new Order(null, Instant.parse("2019-07-21T03:42:10Z"),OrderStatus.WAITING_PAYMENT ,us2);
-		
-		
-		userRepository.saveAll(Arrays.asList(us1,us2));
-		orderRepository.saveAll(Arrays.asList(o1,o2));
-		categoryRepository.saveAll(Arrays.asList(cat1,cat2,cat3));
-		productRepository.saveAll(Arrays.asList(p1,p2,p3,p4));
-		
+
 	}
 
 }
