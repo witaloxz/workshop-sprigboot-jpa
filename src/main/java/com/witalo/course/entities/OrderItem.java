@@ -14,7 +14,6 @@ import jakarta.persistence.Table;
 public class OrderItem {
 	
 	@EmbeddedId
-	
 	private OrderItemPK id = new OrderItemPK();
 	private Integer quantity;
 	private Double price;
@@ -41,6 +40,7 @@ public class OrderItem {
 		id.setOrder(order);
 	}
 	
+	@JsonIgnore
 	public Product getProduct() {
 		return id.getProduct();
 	}
