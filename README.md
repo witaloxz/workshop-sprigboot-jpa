@@ -92,5 +92,5 @@ Em perfil `test` (arquivo `application-test.properties`), o banco é populado au
 ## Contato
 
 Projeto desenvolvido por Witalo Dias.
-[Email](witalodias1@gmail.com)
+[Email](witalodias1@gmail.com)<br>
 [Linkedin](https://www.linkedin.com/in/witalo-dias-775a59289/)
