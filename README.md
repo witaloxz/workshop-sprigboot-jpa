@@ -1,5 +1,5 @@
 
-# Course Project - Spring Boot REST API
+# Project - Spring Boot REST API
 
 ## Sobre
 
