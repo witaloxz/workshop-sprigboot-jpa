@@ -1,98 +1,104 @@
+# 🛒 Spring Boot REST API Project
 
-# Project - Spring Boot REST API
+![Java](https://img.shields.io/badge/Java-17%2B-orange)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.x-brightgreen)
+![JPA](https://img.shields.io/badge/JPA-Hibernate-blue)
+![H2](https://img.shields.io/badge/Database-H2-lightgrey)
+![Maven](https://img.shields.io/badge/Maven-Build-red)
 
-## Sobre
+## 📖 About
 
-Este projeto é uma API REST desenvolvida com Spring Boot que gerencia um sistema básico de vendas com entidades como Usuário, Produto, Categoria, Pedido, Item de Pedido e Pagamento.
+This project is a **RESTful API** developed with **Spring Boot**, designed to manage a basic sales system with entities such as **User, Product, Category, Order, Order Item, and Payment**.
 
-### Funcionalidades principais:
+The goal of this project is to practice REST APIs, entity relationships, exception handling, and clean project structure.
 
-- CRUD completo para Usuários e Produtos
-- Relacionamento muitos-para-muitos entre Produtos e Categorias
-- Associação entre Pedidos e Itens, com cálculo de total
-- Pagamento associado a pedidos
-- Tratamento customizado de exceções (ResourceNotFound e DatabaseException)
-- Configuração para popular banco de dados em ambiente de teste
+## 🚀 Main Features
 
-## Tecnologias utilizadas
+- Full CRUD operations for **Users** and **Products**
+- Many-to-many relationship between **Products** and **Categories**
+- Association between **Orders** and **Order Items**, including total price calculation
+- **Payment** associated with orders
+- Custom exception handling (`ResourceNotFoundException` and `DatabaseException`)
+- Test environment database seeding
+
+## 🛠️ Technologies Used
 
 - Java 17+
 - Spring Boot
 - Spring Data JPA (Hibernate)
-- Banco de dados H2 (ou outro configurado)
-- Jackson para serialização JSON
-- Maven para gerenciamento de dependências
+- H2 Database (or other configured database)
+- Jackson for JSON serialization
+- Maven for dependency management
 
-## Entidades principais
+## 🧩 Main Entities
 
-- **User:** representa usuários do sistema.
-- **Product:** representa produtos, com relacionamento para categorias e itens de pedido.
-- **Category:** categorias dos produtos.
-- **Order:** pedidos realizados por usuários.
-- **OrderItem:** item de pedido, associando pedido e produto com quantidade e preço.
-- **Payment:** pagamento associado a um pedido.
+- **User**: Represents system users.
+- **Product**: Represents products, related to categories and order items.
+- **Category**: Product categories.
+- **Order**: Orders placed by users.
+- **OrderItem**: Order item linking orders and products with quantity and price.
+- **Payment**: Payment associated with an order.
 
-## Estrutura do projeto
+## 📂 Project Structure
 
 ```
 src/main/java/com/witalo/course/
-├── config           # Configurações da aplicação e dados de teste
-├── entities         # Classes modelo (User, Product, Order, etc)
-├── entities/pk      # Classes de chave primária composta (ex: OrderItemPK)
-├── repositories     # Interfaces JpaRepository para acesso ao banco
-├── resources        # Controladores REST (API endpoints)
-├── services         # Lógica de negócio e manipulação das entidades
-└── services/exceptions # Exceções customizadas e tratamento delas
+├── config              # Application configuration and test data
+├── entities            # Entity classes (User, Product, Order, etc.)
+├── entities/pk         # Composite primary key classes (e.g., OrderItemPK)
+├── repositories        # JpaRepository interfaces
+├── resources           # REST controllers (API endpoints)
+├── services            # Business logic and entity handling
+└── services/exceptions # Custom exceptions and handlers
 ```
 
-## Endpoints principais
+## 🔗 Main Endpoints
 
-| Método | Endpoint         | Descrição                  |
-|--------|------------------|----------------------------|
-| GET    | /users           | Lista todos os usuários     |
-| GET    | /users/{id}      | Busca usuário por ID        |
-| POST   | /users           | Cria um novo usuário        |
-| PUT    | /users/{id}      | Atualiza usuário existente  |
-| DELETE | /users/{id}      | Remove usuário              |
-| GET    | /products        | Lista todos os produtos     |
-| GET    | /products/{id}   | Busca produto por ID        |
+| Method | Endpoint        | Description               |
+|-------|-----------------|---------------------------|
+| GET   | /users          | List all users            |
+| GET   | /users/{id}     | Find user by ID           |
+| POST  | /users          | Create a new user         |
+| PUT   | /users/{id}     | Update an existing user   |
+| DELETE| /users/{id}     | Delete a user             |
+| GET   | /products       | List all products         |
+| GET   | /products/{id}  | Find product by ID        |
 
-*Outros endpoints podem ser implementados seguindo essa estrutura.*
+*Additional endpoints can be implemented following the same structure.*
 
-## Exceções tratadas
+## ⚠️ Handled Exceptions
 
-- `ResourceNotFoundException`: quando um recurso não é encontrado (ex: ID inválido)
-- `DatabaseException`: erros relacionados a integridade do banco (ex: delete violando FK)
+- `ResourceNotFoundException`: Thrown when a resource is not found (e.g., invalid ID)
+- `DatabaseException`: Database integrity errors (e.g., delete violating foreign key constraints)
 
-## Como rodar o projeto
+## ▶️ How to Run the Project
 
-1. Clone este repositório:
+1. Clone the repository:
    ```bash
-   git clone <URL_DO_REPOSITORIO>
+   git clone <REPOSITORY_URL>
    cd course
    ```
 
-2. Configure o banco de dados no `application.properties` (por padrão, usa H2 em memória)
+2. Configure the database in `application.properties`  
+   (By default, the project uses an in-memory H2 database)
 
-3. Execute a aplicação via Maven:
+3. Run the application with Maven:
    ```bash
    ./mvnw spring-boot:run
    ```
 
-4. Acesse a API via:
+4. Access the API:
    ```
    http://localhost:8080/users
    http://localhost:8080/products
    ```
 
-## População de dados
+## 🧪 Test Data Seeding
 
-Em perfil `test` (arquivo `application-test.properties`), o banco é populado automaticamente via a classe `TestConfig`, que insere usuários, produtos, categorias e pedidos de exemplo.
+When using the `test` profile (`application-test.properties`), the database is automatically populated via the `TestConfig` class with sample users, products, categories, and orders.
 
-## Contato
+## 📫 Contact
 
-Projeto desenvolvido por Witalo Dias.
-
-[Email](mailto:witalodias1@gmail.com)<br>
-[LinkedIn](https://www.linkedin.com/in/witalo-dias-775a59289/)
-
+Developed by **Witalo Dias**  
+📧 [Email](mailto:witalodias1@gmail.com)  
+💼 [LinkedIn](https://www.linkedin.com/in/witalo-dias-775a59289/)
